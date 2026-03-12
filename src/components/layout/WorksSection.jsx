@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 const works = [
   {
     title: "대표 실적 01",
@@ -21,7 +24,12 @@ export default function WorksSection() {
     <div className="mx-auto max-w-6xl px-6 py-32 md:py-40">
       <div className="flex items-end justify-between gap-6">
         <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Works</h2>
-        <p className="text-sm text-black/55">대표 실적 3개</p>
+        <Link
+          to="/portfolio"
+          className="text-sm !text-black/55 hover:text-black transition-colors"
+        >
+          실적물 보러가기 →
+        </Link>
       </div>
 
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-7">

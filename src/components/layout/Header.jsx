@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -16,6 +18,10 @@ export default function Header() {
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const goHome = () => {
+    navigate("/");
+  };
+
   return (
     <header
       className={[
@@ -26,9 +32,9 @@ export default function Header() {
       ].join(" ")}
     >
       <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-        {/* 로고(나중에 이미지로 교체 가능) */}
+        {/* 로고 */}
         <button
-          onClick={() => go("home")}
+          onClick={goHome}
           className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold tracking-[0.25em] hover:bg-black/5 transition"
           aria-label="홈으로"
         >
@@ -42,6 +48,7 @@ export default function Header() {
           >
             Works
           </button>
+
           <button
             onClick={() => go("contact")}
             className="rounded-full px-4 py-2 text-sm bg-black/5 hover:bg-black/10 transition"
@@ -51,5 +58,5 @@ export default function Header() {
         </nav>
       </div>
     </header>
-  );
+  );QA
 }

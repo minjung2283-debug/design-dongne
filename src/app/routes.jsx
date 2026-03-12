@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Outlet, createBrowserRouter } from "react-router-dom";
 
 import Home from "../pages/Home";
 import PortfolioList from "../pages/PortfolioList";
@@ -14,53 +14,67 @@ import AdminPortfolio from "../pages/admin/AdminPortfolio";
 import AdminPricing from "../pages/admin/AdminPricing";
 
 import AdminGuard from "../components/admin/AdminGuard";
+import ScrollToTop from "../components/layout/ScrollToTop";
+
+function RootLayout() {
+  return (
+    <>
+      <ScrollToTop />
+      <Outlet />
+    </>
+  );
+}
 
 export const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
-  { path: "/portfolio", element: <PortfolioList /> },
-  { path: "/portfolio/:slug", element: <PortfolioDetail /> },
-  { path: "/pricing", element: <Pricing /> },
-  { path: "/contact", element: <Contact /> },
+  {
+    element: <RootLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/portfolio", element: <PortfolioDetail /> },
+      { path: "/pricing", element: <Pricing /> },
+      { path: "/contact", element: <Contact /> },
 
-  { path: "/admin/login", element: <AdminLogin /> },
-  {
-    path: "/admin",
-    element: (
-      <AdminGuard>
-        <AdminDashboard />
-      </AdminGuard>
-    ),
-  },
-  {
-    path: "/admin/company",
-    element: (
-      <AdminGuard>
-        <AdminCompany />
-      </AdminGuard>
-    ),
-  },
-  {
-    path: "/admin/interior",
-    element: (
-      <AdminGuard>
-        <AdminInterior />
-      </AdminGuard>
-    ),
-  },
-  {
-    path: "/admin/portfolio",
-    element: (
-      <AdminGuard>
-        <AdminPortfolio />
-      </AdminGuard>
-    ),
-  },
-  {
-    path: "/admin/pricing",
-    element: (
-      <AdminGuard>
-        <AdminPricing />
-      </AdminGuard>
-    ),
+      { path: "/admin/login", element: <AdminLogin /> },
+      {
+        path: "/admin",
+        element: (
+          <AdminGuard>
+            <AdminDashboard />
+          </AdminGuard>
+        ),
+      },
+      {
+        path: "/admin/company",
+        element: (
+          <AdminGuard>
+            <AdminCompany />
+          </AdminGuard>
+        ),
+      },
+      {
+        path: "/admin/interior",
+        element: (
+          <AdminGuard>
+            <AdminInterior />
+          </AdminGuard>
+        ),
+      },
+      {
+        path: "/admin/portfolio",
+        element: (
+          <AdminGuard>
+            <AdminPortfolio />
+          </AdminGuard>
+        ),
+      },
+      {
+        path: "/admin/pricing",
+        element: (
+          <AdminGuard>
+            <AdminPricing />
+          </AdminGuard>
+        ),
+      },
+    ],
   },
 ]);
