@@ -1,7 +1,6 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
 
 import Home from "../pages/Home";
-import PortfolioList from "../pages/PortfolioList";
 import PortfolioDetail from "../pages/PortfolioDetail";
 import Pricing from "../pages/Pricing";
 import Contact from "../pages/Contact";
